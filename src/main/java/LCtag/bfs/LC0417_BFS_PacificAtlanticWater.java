@@ -2,11 +2,11 @@ package com.techbow.homework.y2021.m10.zekun;
 
 import java.util.*;
 
-public class LC0417_BFS {
+public class LC0417_BFS_PacificAtlanticWater {
 
     public static void main(String[] args){
         int[][] heights = {{1,2,2,3,5},{3,2,3,4,4},{2,4,5,3,1},{6,7,1,4,5},{5,1,1,2,4}};
-        LC0417_BFS sol = new LC0417_BFS();
+        com.techbow.homework.y2021.m10.zekun.LC0417_BFS_PacificAtlanticWater sol = new com.techbow.homework.y2021.m10.zekun.LC0417_BFS_PacificAtlanticWater();
         List<List<Integer>> res = sol.pacificAtlantic(heights);
         System.out.println(res);
     }

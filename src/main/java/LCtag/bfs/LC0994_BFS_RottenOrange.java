@@ -3,7 +3,7 @@ package LCtag.bfs;
 import java.util.*;
 public class LC0994_BFS_RottenOrange {
     class Solution {
-        private static final int[][] DIRS = {{1,0},{-1,0},{0,1},{0,-1}};
+        private final int[][] DIRS = {{1,0},{-1,0},{0,1},{0,-1}};
         public int orangesRotting(int[][] grid) {
             //cc
             int nrow = grid.length;
