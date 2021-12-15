@@ -1,6 +1,6 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LCtag.dp;
 
-public class LC198_Robbery_DP {
+public class LC0198_dp_houseRobbery {
     public int rob(int[] nums) {
         //cc
         if(nums.length == 1){
