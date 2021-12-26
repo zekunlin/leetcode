@@ -1,5 +1,5 @@
 package LCtag.tree;
-
+import LCtag.TreeNode;
 public class LC0450_Tree_DeleteNodeinBST {
     public TreeNode deleteNode(TreeNode root, int key){
         if(root == null) return null;
