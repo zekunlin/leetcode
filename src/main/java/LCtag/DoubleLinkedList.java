@@ -1,5 +1,5 @@
 package LCtag;
-import LCtag.LFU_Cache.Node;
+import LCtag.Node;
 public class DoubleLinkedList {
     Node head;
     Node tail;
