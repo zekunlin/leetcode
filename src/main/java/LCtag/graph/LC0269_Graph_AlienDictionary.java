@@ -1,6 +1,6 @@
 package LCtag.graph;
 
-public class LC0269_AlienDictionary {
+public class LC0269_Graph_AlienDictionary {
     public String alienOrder(String[] words) {
         //cc
 
@@ -62,4 +62,7 @@ public class LC0269_AlienDictionary {
         sb.append(cur);
         return false;
     }
+
+
+
 }

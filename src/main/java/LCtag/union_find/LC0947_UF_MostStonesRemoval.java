@@ -1,2 +1,3 @@
-package LCtag.union_find;public class LC0947_UF_MostStonesRemoval {
+package LCtag.union_find;
+public class LC0947_UF_MostStonesRemoval {
 }

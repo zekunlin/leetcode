@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package LCtag.union_find;
 
 public class LC0261_GraphValidTree_UnionFind {
     //unionFindsolution
