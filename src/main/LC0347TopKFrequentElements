@@ -1,0 +1,115 @@
+class Solution {
+    Map<Integer, Integer> freqMap;
+    int[] elements;
+
+    public int[] topKFrequent(int[] nums, int k) {
+        // sol1: heap
+        /*
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for(int i = 0; i < nums.length; i++){
+            freqMap.put(nums[i], freqMap.getOrDefault(nums[i], 0) + 1);
+        }
+
+        Queue<Integer> pQueue = new PriorityQueue<>(
+            (n1, n2) -> freqMap.get(n1) - freqMap.get(n2)
+        );
+
+        for(int key : freqMap.keySet()){
+            pQueue.add(key);
+            if(pQueue.size() > k){
+                pQueue.poll();
+            }
+        }
+
+        int[] res = new int[k];
+        for(int j = 0; j < k; j++){
+            res[j] = pQueue.poll();
+        }
+
+        return res;
+        */
+
+        // sol2: Quick Select
+        freqMap = new HashMap<>();
+        for(int num : nums)
+        {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        int freqMapSize = freqMap.size();
+        elements = new int[freqMapSize];
+        int x = 0;
+        for(int i : freqMap.keySet())
+        {
+            elements[x] = i;
+            x++;
+        }
+        
+        // sort the element array:
+        // kth top frequent element is (n - k)th less frequent.
+        // Do a partial sort: from less frequent to the most frequent, till
+        // (n - k)th less frequent element takes its place (n - k) in a sorted array. 
+        // All elements on the left are less frequent.
+        // All the elements on the right are more frequent.
+        QuickSelect(0, freqMapSize - 1, freqMapSize - k);
+
+        return Arrays.copyOfRange(elements, freqMapSize - k, freqMapSize);
+    }
+
+    private void Swap(int a, int b, int[] inputArray)
+    {
+        int tmp = inputArray[a];
+        inputArray[a] = inputArray[b];
+        inputArray[b] = tmp;
+    }
+    private int Partition(int left, int right, int pivotIndex)
+    {
+        int pointer = left;
+        int pivotFreq = freqMap.get(elements[pivotIndex]);
+        Swap(pivotIndex, right, elements);
+
+        for(int i = left; i <= right; i++)
+        {
+            if(freqMap.get(elements[i]) < pivotFreq)
+            {
+                Swap(i, pointer, elements);
+                pointer++;
+            }
+        }
+
+        Swap(pointer, right, elements);
+        return pointer; 
+    }
+
+    private void QuickSelect(int i, int j, int nminusk)
+    {
+        if(i == j)
+        {
+            return;
+        }
+
+        Random random = new Random();
+        int pivot_ind = i + random.nextInt(j - i);// or just use i + (j - i) / 2;
+
+        // 
+        pivot_ind = Partition(i, j, pivot_ind); 
+
+        if(pivot_ind == nminusk)// pivot index == (n - k), greater than pivot index -> top k
+        {
+            return;
+        }
+        else if(nminusk < pivot_ind) 
+        {
+            // pivot_ind is the target, now k < pivot_ind,
+            // pivot_ind needs to go to the left part
+            QuickSelect(i, pivot_ind - 1, nminusk);
+        }
+        else
+        {
+            // k > pivot_ind
+            // pivot_ind needs to go to the right part
+
+            QuickSelect(pivot_ind + 1, j, nminusk);
+        }
+    }
+}
