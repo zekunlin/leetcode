@@ -1,0 +1,66 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        /*
+        // sol1:
+        Queue<Integer> pq = new PriorityQueue<>((n1, n2) -> n1 - n2); // max heap
+        for(int i : nums)
+        {
+            pq.add(i);
+            if(pq.size() > k)
+            {
+                pq.poll();
+            }
+        }
+
+        return pq.poll();
+        */
+
+        // sol2:
+        int len = nums.length;
+        QuickSelect(0, len - 1, len - k, nums);
+        return nums[len - k];
+    }
+    private int Partition(int left, int right, int pivot, int[] array){
+        int store_ind = left;
+        Swap(pivot, right, array);
+        for(int i = left; i <= right; i++)
+        {
+            if(array[i] < array[right])
+            {
+                Swap(store_ind, i, array);
+                store_ind++;
+            }
+        }
+
+        Swap(store_ind, right, array);
+        return store_ind;
+    }
+
+    private void Swap(int a, int b, int[] array){
+        int tmp = array[a];
+        array[a] = array[b];
+        array[b] = tmp;
+    }
+
+    private void QuickSelect(int i, int j, int k, int[] array){
+        if(i == j) return;
+
+        Random random = new Random();
+        int pivot = i + (j - i)/2;
+        pivot = Partition(i, j, pivot, array);
+        if(pivot == k)
+        {
+            return;
+        }
+        else if(pivot < k)
+        {
+            //p < k, k is within[p+1, n-1], we need to sort the [p+1, n-1] part, so go right
+            QuickSelect(pivot + 1, j, k, array);
+        }
+        else
+        {
+            //p > k, k is within[0, p-1], we need to sort the [0, p-1] part, so go left
+            QuickSelect(i, pivot - 1, k, array);
+        }
+    }
+}
