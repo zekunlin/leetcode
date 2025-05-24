@@ -100,7 +100,6 @@ class Solution {
         }
         else if(nminusk < pivot_ind) 
         {
-            // pivot_ind is the target, now k < pivot_ind,
             // pivot_ind needs to go to the left part
             QuickSelect(i, pivot_ind - 1, nminusk);
         }
@@ -108,7 +107,6 @@ class Solution {
         {
             // k > pivot_ind
             // pivot_ind needs to go to the right part
-
             QuickSelect(pivot_ind + 1, j, nminusk);
         }
     }
