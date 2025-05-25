@@ -11,7 +11,7 @@
 
 class Solution {
     public ListNode reverseList(ListNode head) {
-        /* sol1:
+        /* sol1: note- remember that have a dummy start at null, and a cur pointing to head.
         ListNode dummy = null;
         ListNode cur = head;
 
