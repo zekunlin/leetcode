@@ -1,0 +1,51 @@
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> Seen = new HashSet<>();
+
+        while(n != 1 && !Seen.contains(n))
+        {
+            Seen.add(n);
+            n = this.getDigits(n);
+        }
+
+        return n == 1;
+    }
+
+    private int getDigits(int n)
+    {
+        //given a number 21: 1st loop: sum += 1*1, n -> 2, d -> 1; sec loop: n -> 0, d -> 2, sum += 2 * 2
+        int sum = 0;
+        while(n > 0)
+        {
+            int d = n % 10;
+            n = n / 10;
+            sum += d * d;
+        }
+        return sum;
+    }
+
+    //sol2:
+    /*
+    class Solution {
+    public int getNext(int n) {
+        int totalSum = 0;
+        while (n > 0) {
+            int d = n % 10;
+            n = n / 10;
+            totalSum += d * d;
+        }
+        return totalSum;
+    }
+
+    public boolean isHappy(int n) {
+        int slowRunner = n;
+        int fastRunner = getNext(n);
+        while (fastRunner != 1 && slowRunner != fastRunner) {
+            slowRunner = getNext(slowRunner);
+            fastRunner = getNext(getNext(fastRunner));
+        }
+        return fastRunner == 1;
+    }
+}
+*/
+}
