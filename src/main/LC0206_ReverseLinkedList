@@ -27,6 +27,20 @@ class Solution {
         
         /* sol2: recursion */
         // explaination video: https://youtu.be/S92RuTtt9EE
+        // basically what recursion doing here is, process cur.next if cur node has next and next is not null.
+        // A->B->C
+        /* reverse(A)
+            → reverse(B)
+                → reverse(C)
+                    → return C 
+                → B.next.next = B  A->B->C->B
+                → B.next = null    A->B C->B
+                → return C
+            → A.next.next = A      A->B->A C->B->A
+            → A.next = null        A C->B->A
+            → return C
+        */
+
         if (head == null || head.next == null) return head;
         
         ListNode ln = reverseList(head.next);
