@@ -12,17 +12,17 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
         /* sol1: note- remember that have a dummy start at null, and a cur pointing to head.
-        ListNode dummy = null;
-        ListNode cur = head;
+        ListNode p1 = null;
+        ListNode p2 = head;
 
-        while(cur != null)
+        while(p2 != null)
         {
-            ListNode tmp = cur.next; // capture the next node incase it's lost after reversed;
-            cur.next = dummy;// revert cur node
-            dummy = cur;//move dummy forward to next node
-            cur = tmp;//move cur forward to next node
+            ListNode p3 = p2.next; // capture the next node incase it's lost after reversed;
+            p2.next = p1;// revert cur node
+            p1 = p2;//move dummy forward to next node
+            p2 = p3;//move cur forward to next node
         }
-        return dummy;
+        return p1;
         */
         
         /* sol2: recursion */
