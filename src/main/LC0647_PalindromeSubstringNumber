@@ -1,0 +1,32 @@
+class Solution {
+    int len;
+    public int countSubstrings(String s) {
+        len = s.length();
+        int palindromeCount = 0;
+
+        for(int i = 0; i < len; i++)
+        {
+            palindromeCount += checkPalindrome(i, i, s); // here take left and right both = i in order to get every single char added to the count;
+            palindromeCount += checkPalindrome(i, i + 1, s);
+        }
+
+        return palindromeCount;
+    }
+
+    private int checkPalindrome(int leftInd, int rightInd, String s)
+    {
+        int count = 0;
+        while(leftInd >= 0 && rightInd < len)
+        {
+            if(s.charAt(leftInd) != s.charAt(rightInd))
+            {
+                break;
+            }
+            count+= 1;
+
+            leftInd--;
+            rightInd++;
+        }
+        return count;
+    }
+}
