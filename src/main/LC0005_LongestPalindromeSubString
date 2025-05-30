@@ -1,0 +1,38 @@
+class Solution {
+    // for each char in the string, 
+    // expand from that char to two sides left and right, if left and right char are the same then left-- and right++
+    // till they are not equal we find the length of the palindrome
+    // time:O(N^2), space: O(N)
+    int len;
+
+    public String longestPalindrome(String s) {
+        len = s.length();
+        
+        // left & right ind for max palindrome substr, 
+        // default set to [0,1] as at least the first char is palindrome it self;
+        int[] maxStrLenInd = new int[]{0, 1};
+
+        for(int i = 1; i < len; i++)
+        {
+            int[] odd = this.isPalindrome(s, i - 1, i + 1);
+            int[] even = this.isPalindrome(s, i - 1, i);
+            int[] longerSubstr = (odd[1] - odd[0]) > (even[1] - even[0]) ? odd : even;
+
+            maxStrLenInd = (maxStrLenInd[1] - maxStrLenInd[0]) > (longerSubstr[1] - longerSubstr[0]) ? maxStrLenInd : longerSubstr;
+        }
+
+        return s.substring(maxStrLenInd[0], maxStrLenInd[1]);
+    }
+
+    private int[] isPalindrome(String s, int leftInd, int rightInd)
+    {
+        while(leftInd >= 0 && rightInd < len)
+        {
+            if (s.charAt(leftInd) != s.charAt(rightInd)) break;
+            leftInd--;
+            rightInd++;
+        }
+
+        return new int[]{leftInd + 1, rightInd};
+    }
+}
