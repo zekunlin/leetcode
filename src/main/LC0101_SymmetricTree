@@ -22,7 +22,7 @@ class Solution {
 
         leftStack.add(root.left);
         rightStack.add(root.right);
-        while(!leftStack.isEmpty())
+        while(!leftStack.isEmpty() && !rightStack.isEmpty())
         {
             TreeNode curLeft = leftStack.pop();
             TreeNode curRight = rightStack.pop();
@@ -44,7 +44,7 @@ class Solution {
 
         }
 
-        return true;
+        return leftStack.isEmpty() && rightStack.isEmpty();
         */
 
         //sol2: recursion, Time: O(N), Space: O(h = LogN)
