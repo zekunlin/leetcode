@@ -1,0 +1,97 @@
+// Sol1: BFS - Start at target node, expand outward, till we find all nodes with k distance from target node.
+// Sol2: DFS - Start at Root node, figure out how far away, from all the other nodes to the target nodes. 
+
+Both solutions have Time: O(N), Space : O(N)
+
+//sol1: BFS with building graph/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public class NodeDistanceToTarget<N, D>{
+        public N Node;
+        public D Distance;
+        public NodeDistanceToTarget(N Node, D Distance){
+            this.Node = Node;
+            this.Distance = Distance;
+        }
+    }
+
+
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        HashMap<TreeNode, TreeNode> nodeParentMap = new HashMap<>();
+        buildNodeParentMap(root, nodeParentMap, null);
+        FindTargetNode(root, target, nodeParentMap);
+
+        return findDistanceKNode(root, nodeParentMap, target, k);
+    }
+
+    private ArrayList<Integer> findDistanceKNode(TreeNode root, HashMap<TreeNode, TreeNode> nodeParentMap, TreeNode target, int k){
+        Queue<NodeDistanceToTarget<TreeNode, Integer>> queue = new LinkedList<>();
+
+        HashSet<TreeNode> visited = new HashSet<>();
+
+        queue.offer(new NodeDistanceToTarget<TreeNode, Integer>(target, 0));
+        visited.add(target);
+
+        while(!queue.isEmpty()){
+            NodeDistanceToTarget<TreeNode, Integer> curNodeDistance = queue.poll();
+            TreeNode curNode = curNodeDistance.Node;
+            int curDistance = curNodeDistance.Distance;
+
+            if(curDistance == k){
+                ArrayList<Integer> ret = new ArrayList<>();
+                for(NodeDistanceToTarget<TreeNode, Integer> i : queue){
+                    ret.add(i.Node.val);
+                }
+                ret.add(curNode.val);
+                return ret;
+            }
+
+            if(curNode.left != null && !visited.contains(curNode.left)){
+                queue.add(new NodeDistanceToTarget<TreeNode, Integer>(curNode.left, curDistance + 1));
+                visited.add(curNode.left);
+            }
+
+            if(curNode.right != null && !visited.contains(curNode.right)){
+                queue.add(new NodeDistanceToTarget<TreeNode, Integer>(curNode.right, curDistance + 1));
+                visited.add(curNode.right);
+            }
+
+            TreeNode curNodeParent = nodeParentMap.get(curNode);
+            if(nodeParentMap.get(curNode) != null && !visited.contains(curNodeParent)){
+                queue.add(new NodeDistanceToTarget<TreeNode, Integer>(curNodeParent, curDistance + 1));
+                visited.add(curNodeParent);
+            }
+        }
+
+        return new ArrayList<Integer>();
+    }
+
+    //Build node to its parent graph, build an edge from node to its parent
+    private void buildNodeParentMap(TreeNode root, HashMap<TreeNode, TreeNode> nodeParentMap, TreeNode parent){
+        if(root != null){
+            nodeParentMap.put(root, parent);
+            buildNodeParentMap(root.left, nodeParentMap, root);
+            buildNodeParentMap(root.right, nodeParentMap, root);
+        }
+    }
+
+    //We need to expand from target node to outside, so find the target node first. 
+    private TreeNode FindTargetNode(TreeNode root, TreeNode targetNode, HashMap<TreeNode, TreeNode> nodeParentMap){
+        if(root == targetNode) return root;
+
+        TreeNode curNodeParent = nodeParentMap.get(targetNode);
+
+        if(curNodeParent.left != null && curNodeParent.left.val == targetNode.val){
+            return curNodeParent.left;
+        }
+
+        return curNodeParent.right;
+    }
+}
