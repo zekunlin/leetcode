@@ -1,0 +1,95 @@
+import java.util.*;
+//Sol1: inorder traversal add to a list, and for loop modify every tree node in the list
+// Time: O(N), Space: O(N);
+class Program {
+  public static BinaryTree flattenBinaryTree(BinaryTree root) {
+    // Write your code here.
+    ArrayList<BinaryTree> treeList = new ArrayList<BinaryTree>();
+    getNodeInOrder(root, treeList);
+
+    for(int i = 0; i < treeList.size() - 1; i++){
+      treeList.get(i).right = treeList.get(i + 1);
+      treeList.get(i + 1).left = treeList.get(i);
+    }
+    
+    return treeList.get(0);
+  }
+
+  public static void getNodeInOrder(BinaryTree node, ArrayList<BinaryTree> treeList){
+    if(node == null) return;
+
+    getNodeInOrder(node.left, treeList);
+    treeList.add(node);
+    getNodeInOrder(node.right, treeList);
+  }
+
+  // This is the class of the input root. Do not edit it.
+  static class BinaryTree {
+    int value;
+    BinaryTree left = null;
+    BinaryTree right = null;
+
+    public BinaryTree(int value) {
+      this.value = value;
+    }
+  }
+}
+
+
+//Sol2: Recursion find every node's rightMost node in the left subtree, and leftMost 
+// in the right subtree, those are the ones to connect to the current node:
+// rightMost(leftSubtree) -> curNode -> leftMost(rightSubtree)
+// Time:O(N), space: O(h = logn)
+import java.util.*;
+
+class Program {
+  public static BinaryTree flattenBinaryTree(BinaryTree root) {
+    // Write your code here.
+    return flattenTree(root)[0];
+  }
+
+  public static BinaryTree[] flattenTree(BinaryTree root){
+    BinaryTree leftMost;
+    BinaryTree rightMost;
+
+    if(root.left == null)
+    {
+      leftMost = root;
+    }
+    else
+    {
+      //
+      BinaryTree[] leftAndRightMost = flattenTree(root.left);
+      leftMost = leftAndRightMost[0];
+      connectNodes(leftAndRightMost[1], root); //here leftAndRightMost[1] = rightMost node in left subtree
+    }
+
+    if(root.right == null)
+    {
+      rightMost = root;
+    }
+    else
+    {
+      BinaryTree[] leftAndRightMost = flattenTree(root.right);
+      rightMost = leftAndRightMost[1];
+      connectNodes( root, leftAndRightMost[0]);
+    }
+
+    return new BinaryTree[] {leftMost, rightMost};
+  }
+
+  public static void connectNodes(BinaryTree node1, BinaryTree node2){
+    node1.right = node2;
+    node2.left = node1;
+  }
+  // This is the class of the input root. Do not edit it.
+  static class BinaryTree {
+    int value;
+    BinaryTree left = null;
+    BinaryTree right = null;
+
+    public BinaryTree(int value) {
+      this.value = value;
+    }
+  }
+}
