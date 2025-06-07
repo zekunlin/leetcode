@@ -1,0 +1,80 @@
+// sol2: DFS Time: O(N), Space: O(N)
+// video start at 24:50
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+
+        //*the goal of this dfs, is to find the distance of each node in the tree from the target node
+        findDistanceKNode(root, target.val, k, ret);
+
+        return ret;
+    }
+
+    private int findDistanceKNode(TreeNode root, int target, int k, ArrayList<Integer> distanceKNodes){
+        if(root == null) return -1; //-1 indicating invalid distance
+
+        //found the target, need to add all k distance nodes within the subtree with the cur node as the root
+        if(root.val == target) {
+            addSubtreeNode(root, 0, k, distanceKNodes);
+            
+            //return 1, because when I find the target node, the treenode in the stack that calling this dfs
+            // will have distance of 1 edge from the target node
+            return 1;
+        }
+
+        // below two lines are to see if the target is in left/right substree
+        // by checking how far/what is distance
+        // from cur 'root'(*not 'root.left') to target node
+        // this is because we only accumulate distance when we find target node,
+        // see  below, if(leftDistance != -1) ...return leftDistance +1
+        // and if(leftDistance==k || rightDistance == k) ... return 1;
+        int leftDistance = findDistanceKNode(root.left, target, k, distanceKNodes);
+        int rightDistance = findDistanceKNode(root.right, target, k, distanceKNodes);
+
+        // this means we find nodes that are k distance from target node,
+        // so add this node to the ret list
+        if(leftDistance == k || rightDistance == k){
+            distanceKNodes.add(root.val);
+        }
+
+        // below two scenario covers the case of: the target node is in the left/right subtree of current node,
+        // then need to go opposite side of subtree to find distance of (k - leftDistance/rightDistance - 1) nodes
+        // leftDistance != -1
+        // means target node is in the left subtree
+        // so I need to go to right subtree, to find nodes with 'distance of whatever leftDistance is, plus 1' in the right subtree,
+        // because we are passing root: leftSubtree -> root -> rightSubtree, 
+        if(leftDistance != -1){
+            addSubtreeNode(root.right, leftDistance + 1, k, distanceKNodes);
+            return leftDistance + 1;
+        }
+
+        //same for the right
+        if(rightDistance != -1){
+            addSubtreeNode(root.left, rightDistance + 1, k, distanceKNodes);
+            return rightDistance + 1;
+        }
+
+        return -1;
+    }
+
+    private void addSubtreeNode(TreeNode root, int distance, int k, ArrayList<Integer> distanceKNodes){
+        if(root == null) return;
+
+        if(distance == k){
+            distanceKNodes.add(root.val);
+            return;
+        }
+        addSubtreeNode(root.left, distance + 1, k, distanceKNodes);
+        addSubtreeNode(root.right, distance + 1, k, distanceKNodes);
+    }
+}
