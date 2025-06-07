@@ -1,5 +1,8 @@
 import java.util.function.Function;
-
+// consider 3 scenarios here:
+// 1.when arrived curNode and next go left: we must come from parent node of curNode
+// 2.when arrived curNode and next either go right if exists or go parent: we must finised and come back from cur.left
+// 3.when none of above two cases, then we have traversed both cur.left and cur.right, so go parent
 class Program {
   public static void iterativeInOrderTraversal(
     BinaryTree tree, Function<BinaryTree, Void> callback
