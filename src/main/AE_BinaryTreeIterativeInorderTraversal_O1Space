@@ -1,0 +1,50 @@
+import java.util.function.Function;
+
+class Program {
+  public static void iterativeInOrderTraversal(
+    BinaryTree tree, Function<BinaryTree, Void> callback
+  ) {
+    BinaryTree previousNode = null;
+    BinaryTree curNode = tree;
+    while(curNode != null){
+      BinaryTree nextNode;
+      if(previousNode == null || previousNode == curNode.parent){
+        if(curNode.left != null){
+           nextNode = curNode.left;
+        }
+        else{
+          callback.apply(curNode);
+          nextNode = curNode.right != null ? curNode.right : curNode.parent;
+        }
+      }
+      else if(previousNode == curNode.left)
+      {
+        callback.apply(curNode);
+        nextNode = curNode.right != null ? curNode.right : curNode.parent;
+      }
+      else
+      {
+        nextNode = curNode.parent;
+      }
+
+      previousNode = curNode;
+      curNode = nextNode;
+    }
+  }
+
+  static class BinaryTree {
+    public int value;
+    public BinaryTree left;
+    public BinaryTree right;
+    public BinaryTree parent;
+
+    public BinaryTree(int value) {
+      this.value = value;
+    }
+
+    public BinaryTree(int value, BinaryTree parent) {
+      this.value = value;
+      this.parent = parent;
+    }
+  }
+}
