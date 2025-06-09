@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Program {
+  public static boolean validateBst(BST tree) {
+    
+  }
+
+  private static boolean isBST(BST tree, Integer lowerBound, Integer upperBound)
+  {
+    
+  }
+
+  static class BST {
+    public int value;
+    public BST left;
+    public BST right;
+
+    public BST(int value) {
+      this.value = value;
+    }
+  }
+}
