@@ -1,4 +1,6 @@
-package java.LCtag.*;
+package java.LCtag.tree;
+import java.LCtag.TreeNode;
+import java.util.Stack;
 
 public class LC0653_Tree_TwoSumIV {
     class Solution {

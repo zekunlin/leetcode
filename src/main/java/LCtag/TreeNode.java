@@ -1,4 +1,4 @@
-package LCtag;
+package java.LCtag;
 
 public class TreeNode {
     public int val;
