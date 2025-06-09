@@ -23,6 +23,27 @@ class Solution {
         return validBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 
           //sol2:
+          /*
+           * if(root == null) return true;
+
+            Stack<TreeNode> stack = new Stack<>();
+            TreeNode prevNode = null;
+            while(root != null || !stack.isEmpty()){
+                while(root != null)
+                {
+                    stack.push(root);
+                    root = root.left;
+                }
+
+                root = stack.pop();
+                if(prevNode != null && root.val <= prevNode.val) return false;
+
+                prevNode = root;
+                root = root.right;
+            }
+
+            return true;
+           */
         
     }
 
