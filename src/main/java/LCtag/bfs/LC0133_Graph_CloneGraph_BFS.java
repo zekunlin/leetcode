@@ -1,4 +1,4 @@
-package LCtag.bfs;
+package java.LCtag.bfs;
 
 import LCtag.Node;
 import java.util.*;

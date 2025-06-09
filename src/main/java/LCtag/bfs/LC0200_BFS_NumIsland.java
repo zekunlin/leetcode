@@ -1,4 +1,4 @@
-package LCtag.bfs;
+package java.LCtag.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
