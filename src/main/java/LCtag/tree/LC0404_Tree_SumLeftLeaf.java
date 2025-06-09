@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package java.LCtag.*;
 
 public class LC0404_Tree_SumLeftLeaf {
     private int sum = 0;

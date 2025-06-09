@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package java.LCtag.*;
 
 public class LC0226_Tree_InvertTree {
     public TreeNode invertTree(TreeNode root) {

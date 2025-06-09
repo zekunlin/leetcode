@@ -1,4 +1,4 @@
-package LCtag.bfs;
+package java.LCtag.bfs;
 
 import java.util.*;
 public class LC0994_BFS_RottenOrange {

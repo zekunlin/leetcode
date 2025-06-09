@@ -1,2 +1,2 @@
-package com.techbow.homework.y2021.m10.zekun;public class LC0114_Tree_FlattenBinaryTree {
+package java.LCtag.*;public class LC0114_Tree_FlattenBinaryTree {
 }

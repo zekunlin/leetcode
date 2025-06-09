@@ -1,4 +1,4 @@
-package LCtag.dfs;
+package java.LCtag.Deque;
 
 public class LC0239_SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {

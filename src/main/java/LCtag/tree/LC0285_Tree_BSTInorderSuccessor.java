@@ -1,4 +1,4 @@
-package com.techbow.homework.y2021.m10.zekun;
+package java.LCtag.*;
 
 public class LC0285_Tree_BSTInorderSuccessor {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
