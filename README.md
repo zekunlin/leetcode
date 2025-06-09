@@ -2,4 +2,4 @@
 
 
 # leetcode
-road to Gg
+road to Amazon
