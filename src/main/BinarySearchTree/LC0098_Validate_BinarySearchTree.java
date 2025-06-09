@@ -1,3 +1,5 @@
+package BinarySearchTree;
+import Common.TreeNode;
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -18,13 +20,14 @@ class Solution {
     public boolean isValidBST(TreeNode root) {
         if(root == null) return true;
         
-        //return validBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        return validBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 
           //sol2:
         
     }
 
-    public boolean validBST(TreeNode node, Integer lowerBound, Integer upperBound){
+    public boolean validBST(TreeNode node, Integer lowerBound, Integer upperBound)
+    {
         if(node == null) return true;
         
         if(node.val <= lowerBound || node.val >= upperBound) return false;
@@ -32,13 +35,10 @@ class Solution {
         boolean isLeftValid = validBST(node.left, lowerBound, node.val);
         return isLeftValid && validBST(node.right, node.val, upperBound); 
     }
-
-  
-
 }
 
 
  
 
 
-https://leetcode.com/problems/validate-binary-search-tree/solutions/32112/learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-java-solution
+//https://leetcode.com/problems/validate-binary-search-tree/solutions/32112/learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-java-solution
