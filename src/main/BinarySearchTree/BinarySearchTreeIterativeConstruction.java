@@ -1,6 +1,5 @@
 package BinarySearchTree;
 import Common.BinarySearchTree;
-import java.util.*;
 
 public class BinarySearchTreeIterativeConstruction {
     public BinarySearchTree root;
