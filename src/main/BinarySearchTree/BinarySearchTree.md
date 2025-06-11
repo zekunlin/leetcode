@@ -12,3 +12,10 @@ If want to allow duplicate values, we can say, the value of all nodes in the rig
 equal than the value of the node.
 
 This property allows efficient searching, insertion, and deletion operations.
+
+## when actually Traversal tree begin to execute logic
+
+Tree problems recursion and stack, like inorder traverse, hit base case first:
+if(node == null)
+while(node != null){stack.push(node); node = node.left}
+it goes all the way to the left. when it cant, then the actual logic starts

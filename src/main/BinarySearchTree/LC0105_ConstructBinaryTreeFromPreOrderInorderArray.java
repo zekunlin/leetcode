@@ -3,7 +3,7 @@ import Common.TreeNode;
 import java.util.*;
 
 
-class Solution {
+class ConstructBinaryTree {
     int rootIdx;
     HashMap<Integer, Integer> idxMap;
     public TreeNode buildTree(int[] preorder, int[] inorder) {

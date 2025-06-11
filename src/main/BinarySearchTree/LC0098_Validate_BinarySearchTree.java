@@ -16,7 +16,7 @@ import Common.TreeNode;
  * }
  */
 
-class Solution {
+class IsValidBST {
     public boolean isValidBST(TreeNode root) {
         if(root == null) return true;
         

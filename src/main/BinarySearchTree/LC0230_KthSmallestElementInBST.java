@@ -3,7 +3,7 @@ package BinarySearchTree;
 import java.util.*;
 import Common.TreeNode;
 
-class Solution {
+class KthSmallest {
     public int kthSmallest(TreeNode root, int k) {
         Stack<TreeNode> stack = new Stack<>();
 

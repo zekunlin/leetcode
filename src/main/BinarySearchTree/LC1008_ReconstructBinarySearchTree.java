@@ -1,7 +1,7 @@
 package BinarySearchTree;
 import Common.TreeNode;
 // Time: O(nLogn), Space: O(N)
-class Solution {
+class ReconstructBST {
     public TreeNode bstFromPreorder(int[] preorder) {
         int len = preorder.length;
         return buildBST(0, len, preorder);

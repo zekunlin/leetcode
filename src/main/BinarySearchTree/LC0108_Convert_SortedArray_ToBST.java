@@ -2,7 +2,7 @@ package BinarySearchTree;
 
 import Common.TreeNode;
 
-class Solution {
+class ConvertSortedArrayToBST {
     public TreeNode sortedArrayToBST(int[] nums) {
         return preorderConstructBST(0, nums.length - 1, nums);
     }
