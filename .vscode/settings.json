@@ -4,5 +4,5 @@
     "java.references.includeDecompiledSources": false,
     "java.debug.settings.debugSupportOnDecompiledSource": "off",
     "java.debug.settings.forceBuildBeforeLaunch": false,
-    "java.gradle.buildServer.enabled": "off"
+    "java.gradle.buildServer.enabled": "on"
 }
