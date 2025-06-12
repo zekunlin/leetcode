@@ -1,3 +1,7 @@
+package LinkedList;
+
+import Common.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -9,7 +13,7 @@
  * }
  */
 
-class Solution {
+class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
         /* sol1: note- remember that have a dummy start at null, and a cur pointing to head.
         ListNode p1 = null;

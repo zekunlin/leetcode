@@ -1,3 +1,7 @@
+package LinkedList;
+
+import Common.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -17,7 +21,7 @@
 // if(curNode.val != leftNode.val) return false;
 
 // 3. then if value are the same, 
-class Solution {
+class PalindromeLinkedListSol2 {
     ListNode leftNode;
 
     public boolean isPalindrome(ListNode head) {

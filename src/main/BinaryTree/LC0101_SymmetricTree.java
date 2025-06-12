@@ -1,3 +1,7 @@
+package BinaryTree;
+
+import Common.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -13,40 +17,52 @@
  *     }
  * }
  */
-class Solution {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        // sol1: recursion
-        // Time: O(N), Space: O(LogN) worst case O(N);        
-        // if(p != null && q != null && p.val == q.val){
-        //     return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-        // }
-
-        // return p == q;
-
-        //sol2: stack
+class SymmetricTree {
+    public boolean isSymmetric(TreeNode root) {
+        
+        /* sol1: stack, T = O(N), Space = O(h = LogN) 
         Stack<TreeNode> leftStack = new Stack<>();
         Stack<TreeNode> rightStack = new Stack<>();
 
-        leftStack.add(p);
-        rightStack.add(q);
-
+        leftStack.add(root.left);
+        rightStack.add(root.right);
         while(!leftStack.isEmpty() && !rightStack.isEmpty())
         {
             TreeNode curLeft = leftStack.pop();
             TreeNode curRight = rightStack.pop();
+
             if(curLeft == null && curRight == null) continue;
+
             if(curLeft != null && curRight != null && curLeft.val == curRight.val)
             {
                 leftStack.add(curLeft.left);
                 leftStack.add(curLeft.right);
 
-                rightStack.add(curRight.left);
                 rightStack.add(curRight.right);
+                rightStack.add(curRight.left);
             }
-            else{
+            else
+            {
                 return false;
             }
+
         }
+
         return leftStack.isEmpty() && rightStack.isEmpty();
+        */
+
+        //sol2: recursion, Time: O(N), Space: O(h = LogN)
+        return checkSymmetric(root.left, root.right);
+        
+    }
+
+    private boolean checkSymmetric(TreeNode left, TreeNode right)
+    {
+        if(left != null && right != null && left.val == right.val)
+        {
+            return checkSymmetric(left.left, right.right) && checkSymmetric(left.right, right.left);
+        }
+
+        return left == right;
     }
 }

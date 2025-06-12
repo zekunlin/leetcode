@@ -1,3 +1,7 @@
+package LinkedList;
+
+import Common.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -8,7 +12,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+class RemoveNthNodeFromEnd {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummyNode = new ListNode(0);
         dummyNode.next = head;

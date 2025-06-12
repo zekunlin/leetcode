@@ -1,3 +1,7 @@
+package BinaryTree;
+
+import Common.TreeNode;
+import java.util.*;
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -13,7 +17,7 @@
  *     }
  * }
  */
-class Solution {
+class SameTree {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         // sol1: recursion
         // Time: O(N), Space: O(LogN) worst case O(N);        

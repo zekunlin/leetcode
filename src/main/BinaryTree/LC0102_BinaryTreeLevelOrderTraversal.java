@@ -1,3 +1,8 @@
+package BinaryTree;
+
+import Common.TreeNode;
+import java.util.*;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -13,11 +18,11 @@
  *     }
  * }
  */
-class Solution {
+class BinaryTreeLeveoOrder {
     List<List<Integer>> levels;
     public List<List<Integer>> levelOrder(TreeNode root) {
         // sol1: BFS, Time: O(N), Space: O(N) 
-        /*
+        
         List<List<Integer>> ret = new ArrayList<>();
         if(root == null) return ret;
         
@@ -42,7 +47,7 @@ class Solution {
             ret.add(tmp);
         }
 
-        return ret;*/
+        return ret;
 
         // sol2: DFS, Time: O(N), Space: O()
         levels = new ArrayList<>();
