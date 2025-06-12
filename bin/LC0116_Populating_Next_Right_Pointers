@@ -1,0 +1,90 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node next;
+
+    public Node() {}
+    
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, Node _left, Node _right, Node _next) {
+        val = _val;
+        left = _left;
+        right = _right;
+        next = _next;
+    }
+};
+*/
+
+class Solution {
+    public Node connect(Node root) {
+        
+        //sol3: one prev pointer, Time: O(n), Space: O(1)
+        //at level n, we build n + 1 level connection horizontally,
+        //things done at level n: n.left -> n.right
+        //so at next level n + 1, two nodes has built next pointer (from level n),
+        //then we handle (n+1) level left -> right 
+        if(root == null) return root;
+
+        Node leftMost = root;
+
+        while(leftMost.left != null)
+        {
+            Node head = leftMost;
+            while(head != null)
+            {
+                head.left.next = head.right;
+
+                if(head.next != null)
+                {
+                    head.right.next = head.next.left;
+                }
+
+                head = head.next;
+            }
+
+            leftMost = leftMost.left;
+        } 
+
+        /*
+        // sol2: DFS, Time: O(N), Space: O(h)
+        if(root == null) return root;
+
+        if(root.left != null) root.left.next = root.right;
+
+        if(root.right != null && root.next != null) root.right.next = root.next.left;
+        
+        connect(root.left);
+        connect(root.right);
+        */
+        /*
+        // sol1: BFS, Time: O(n), Space: O(n)
+        if(root == null) return root;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty())
+        {
+            int qSize = queue.size();
+            for(int i = 0; i < qSize; i++)
+            {
+                Node cur = queue.poll();
+                if(i < qSize - 1){
+                    cur.next = queue.peek();
+                }
+                if(cur.left != null) queue.offer(cur.left);
+                if(cur.right != null) queue.offer(cur.right);
+            }
+        }
+        */
+
+
+        return root;
+    }
+}

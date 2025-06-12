@@ -1,0 +1,56 @@
+class Solution {
+    public int romanToInt(String s) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("M", 1000);
+        map.put("D", 500);
+        map.put("C", 100);
+        map.put("L", 50);
+        map.put("X", 10);
+        map.put("V", 5);
+        map.put("I", 1);
+
+        int sum = 0;
+        /* sol1
+        int i = 0;
+        while(i < s.length())
+        {
+            var cur = s.substring(i, i+1);
+            var curVal = map.get(cur);
+            var nextVal = 0;
+            if (i + 1 < s.length())
+            {
+                var nextString = s.substring(i + 1, i + 2);
+                nextVal = map.get(nextString);
+            }
+
+            if (curVal < nextVal){
+                sum += (nextVal - curVal);
+                i+=2;
+            }
+            else
+            {
+                sum += curVal;
+                i+=1;
+            }
+        }
+        */
+        var lastString = s.substring(s.length() - 1);
+        var lastVal = map.get(lastString);
+        sum = lastVal;
+        int i = s.length() - 2;
+        while(i >=0){
+            String curString = s.substring(i, i + 1);
+            var curVal = map.get(curString);
+            if(curVal < lastVal){
+                sum -= curVal;
+            }
+            else
+            {
+                sum += curVal;
+            }
+            lastVal = curVal;
+            i--;
+        }
+        return sum;
+    }
+}

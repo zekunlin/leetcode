@@ -1,0 +1,48 @@
+// note: consider a state space tree for thie string "aab"
+// a, a, b
+// aa, b
+
+class Solution {
+    int len;
+    public List<List<String>> partition(String s) {
+        len = s.length();
+        List<List<String>> res = new ArrayList<>();
+        List<String> tmpList = new ArrayList<>();
+        dfs(s, 0, res, tmpList);
+
+        return res;
+    }
+
+    private void dfs(String s, int leftInd, List<List<String>> res, List<String> tmpList)
+    {
+        if(leftInd >= len)
+        {
+            res.add(new ArrayList<String>(tmpList));
+            return;
+        }
+
+        for(int rightInd = leftInd; rightInd < len; rightInd++)
+        {
+            if(isPalindrome(leftInd, rightInd, s))
+            {
+                tmpList.add(s.substring(leftInd, rightInd + 1));
+                dfs(s, rightInd + 1, res, tmpList);
+                tmpList.remove(tmpList.size() - 1);
+            }
+        }
+    }
+
+    private boolean isPalindrome(int leftInd, int rightInd, String s)
+    {
+        while(leftInd <= rightInd)
+        {
+            if (s.charAt(leftInd) != s.charAt(rightInd)) {
+                return false;
+            }
+            leftInd++;
+            rightInd--;
+        }
+
+        return true;
+    }
+}

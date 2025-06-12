@@ -1,0 +1,36 @@
+import java.util.*;
+//Time: worst O(N^2), average O(NlogN), Space:O(H) 
+class Program {
+  public static int allKindsOfNodeDepths(BinaryTree root) {
+    // Write your code here.
+    Stack<BinaryTree> stack = new Stack<>();
+    int sumNodeDepth = 0;
+
+    stack.push(root);
+
+    while(!stack.isEmpty()){
+      BinaryTree curNode = stack.pop();
+      sumNodeDepth += nodeDepth(curNode, 0);
+      if(curNode.left != null) stack.push(curNode.left);
+      if(curNode.right != null) stack.push(curNode.right);
+    }
+
+    return sumNodeDepth;
+  }
+
+  public static int nodeDepth(BinaryTree node, int depth){
+    if(node == null) return 0;
+    return depth + nodeDepth(node.left, depth + 1) + nodeDepth(node.right, depth + 1); 
+  }
+  static class BinaryTree {
+    int value;
+    BinaryTree left;
+    BinaryTree right;
+
+    public BinaryTree(int value) {
+      this.value = value;
+      left = null;
+      right = null;
+    }
+  }
+}

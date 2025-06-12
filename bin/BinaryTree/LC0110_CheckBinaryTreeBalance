@@ -1,0 +1,91 @@
+import java.util.*;
+// both sol Time:O(N), Space:O(h= logn)
+// sol1: modify tree object add height
+class Program {
+  // This is an input class. Do not edit.
+  static class BinaryTree {
+    public int value;
+    public BinaryTree left = null;
+    public BinaryTree right = null;
+    public int height;
+    public BinaryTree(int value) {
+      this.value = value;
+    }
+  }
+
+  public boolean heightBalancedBinaryTree(BinaryTree tree) {
+    // Write your code here.
+    return checkBalanceTree(tree);
+  }
+
+  private boolean checkBalanceTree(BinaryTree tree){
+    if(tree == null) {
+      return true;
+    }
+
+    boolean leftBalance = checkBalanceTree(tree.left);
+
+    
+    boolean rightBalance = checkBalanceTree(tree.right);
+
+    if(!leftBalance || !rightBalance) return false;
+    
+    int leftHeight = tree.left != null ? tree.left.height : -1;
+    int rightHeight = tree.right != null ? tree.right.height : -1;
+    
+    if (Math.abs(leftHeight - rightHeight) > 1){
+      return false;
+    }
+
+    tree.height = Math.max(leftHeight, rightHeight) + 1;
+    return true;
+  }
+}
+
+
+//sol2: Create a new class TreeInfo
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+public class TreeInfo{
+    int height;
+    boolean balanced;
+
+    public TreeInfo(int height, boolean balanced){
+        this.height = height;
+        this.balanced = balanced;
+    }
+}
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return CheckTreeBalance(root).balanced;
+    }
+
+    private TreeInfo CheckTreeBalance(TreeNode root){
+        if(root == null) return new TreeInfo(-1, true);
+
+        TreeInfo leftInfo = CheckTreeBalance(root.left);
+        if(!leftInfo.balanced) return new TreeInfo(-1, false);
+
+        TreeInfo rightInfo = CheckTreeBalance(root.right);
+        if(!rightInfo.balanced) return new TreeInfo(-1, false);
+
+        int height = Math.max(leftInfo.height, rightInfo.height) + 1;
+        boolean balanced = Math.abs(leftInfo.height - rightInfo.height) <= 1;
+
+        return new TreeInfo(height, balanced); 
+    }
+}

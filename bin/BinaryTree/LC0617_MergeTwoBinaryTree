@@ -1,0 +1,66 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        // sol1: Time: O(N), Space: O(h = logn)
+        /*
+        if(root1 == null) return root2;
+        if(root2 == null) return root1;
+
+        root1.val = (root1 == null ? 0 : root1.val) + (root2 == null ? 0 : root2.val);
+        root1.left = mergeTrees(root1.left, root2.left);
+        root1.right = mergeTrees(root1.right, root2.right);
+
+        return root1;
+        */
+
+        //sol2: stack
+        if(root1 ==null) return root2;
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+
+        stack1.push(root1);
+        stack2.push(root2);
+
+        while(!stack1.isEmpty())
+        {
+            TreeNode cur1 = stack1.pop();
+            TreeNode cur2 = stack2.pop();
+
+            if(cur2 == null) continue;
+
+            cur1.val = (cur1 == null ? 0 : cur1.val) + (cur2 == null ? 0 : cur2.val);
+
+            if(cur1.left == null){
+                cur1.left = cur2.left;
+            }
+            else{
+                stack1.push(cur1.left);
+                stack2.push(cur2.left);
+            }
+
+            if(cur1.right == null){
+                cur1.right = cur2.right;
+            }
+            else{
+                stack1.push(cur1.right);
+                stack2.push(cur2.right);
+            }
+        }
+
+        return root1;
+    }
+}

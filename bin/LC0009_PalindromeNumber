@@ -1,0 +1,34 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        //sol1:
+        // String xStr = Integer.toString(x);
+        // int i = 0;
+        // int j = xStr.length() - 1;
+
+        // while(i <= j)
+        // {
+        //     if(xStr.charAt(i) != xStr.charAt(j))
+        //     {
+        //         return false;
+        //     }
+        //     i++;
+        //     j--;
+        // }
+
+        // return true;
+
+        //sol2 reverse the number:
+
+        int xCopy = x;
+        int reversedX = 0;
+
+        while(xCopy > 0)
+        {
+            int lastDigit = xCopy % 10;
+            reversedX = (reversedX * 10 ) + lastDigit;
+            xCopy /= 10;
+        }
+
+        return reversedX == x;
+    }
+}

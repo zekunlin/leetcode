@@ -1,0 +1,48 @@
+import java.util.*;
+
+// Time: O(N), Space: O(h)
+class Program {
+  public static int allKindsOfNodeDepths(BinaryTree root) {
+    // Write your code here.
+    return GetTreeInfo(root).sumOfAllDepth;
+  }
+
+  static class BinaryTree {
+    int value;
+    BinaryTree left;
+    BinaryTree right;
+
+    public BinaryTree(int value) {
+      this.value = value;
+      left = null;
+      right = null;
+    }
+  }
+
+  private static TreeInfo GetTreeInfo(BinaryTree tree){
+    if(tree == null) return new TreeInfo(0, 0, 0);
+
+    TreeInfo leftTreeInfo = GetTreeInfo(tree.left);
+    TreeInfo rightTreeInfo = GetTreeInfo(tree.right);
+
+    int nodesCount = leftTreeInfo.nodesCount + rightTreeInfo.nodesCount + 1;
+    int sumOfLeftDepth = leftTreeInfo.sumOfDepth + leftTreeInfo.nodesCount;
+    int sumOfRightDepth = rightTreeInfo.sumOfDepth + rightTreeInfo.nodesCount;
+    int sumOfDepth = sumOfLeftDepth + sumOfRightDepth;
+    int sumOfAllDepth = sumOfDepth + leftTreeInfo.sumOfAllDepth + rightTreeInfo.sumOfAllDepth;
+
+    return new TreeInfo(nodesCount, sumOfDepth, sumOfAllDepth);
+  }
+  
+  static class TreeInfo{
+    int nodesCount;
+    int sumOfDepth;
+    int sumOfAllDepth;
+
+    public TreeInfo(int nodesCount, int sumOfDepth, int sumOfAllDepth){
+      this.nodesCount = nodesCount;
+      this.sumOfDepth = sumOfDepth;
+      this.sumOfAllDepth = sumOfAllDepth;
+    }
+  }
+}
