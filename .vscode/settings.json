@@ -2,5 +2,7 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.outputPath": "bin",
     "java.references.includeDecompiledSources": false,
-    "java.debug.settings.debugSupportOnDecompiledSource": "off"
+    "java.debug.settings.debugSupportOnDecompiledSource": "off",
+    "java.debug.settings.forceBuildBeforeLaunch": false,
+    "java.gradle.buildServer.enabled": "off"
 }
