@@ -14,24 +14,31 @@ import Common.ListNode;
  */
 class RemoveNthNodeFromEnd {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummyNode = new ListNode(0);
-        dummyNode.next = head;
-        ListNode p1 = dummyNode;
-        ListNode p2 = dummyNode;
+        ListNode slow = head;
+        ListNode fast = head;
 
-        int ind = 1;
-        while(ind <= n + 1)
+        int ind = 0;
+        while(ind <= n)
         {
-            p1 = p1.next;
+            fast = fast.next;
             ind += 1;
         }
 
-        while(p1!=null)
+        if(fast == null)
         {
-            p1 = p1.next;
-            p2 = p2.next;
+            head.val = head.next.val;
+            head.next = head.next.next;
         }
-        p2.next = p2.next.next;
-        return dummyNode.next;
+        //check fast.next not fast !=null
+        // so when break the while here, the slow is 
+        // at exactly one node before (N-1th) of the node want to remove(Nth node);
+        while(fast.next!=null)
+        {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        slow.next = slow.next.next;
+        return head;
     }
 }
