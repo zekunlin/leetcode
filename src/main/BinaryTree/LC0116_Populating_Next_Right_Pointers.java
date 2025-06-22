@@ -1,27 +1,7 @@
-/*
-// Definition for a Node.
-class Node {
-    public int val;
-    public Node left;
-    public Node right;
-    public Node next;
+package BinaryTree;
 
-    public Node() {}
-    
-    public Node(int _val) {
-        val = _val;
-    }
 
-    public Node(int _val, Node _left, Node _right, Node _next) {
-        val = _val;
-        left = _left;
-        right = _right;
-        next = _next;
-    }
-};
-*/
-
-class Solution {
+class PopulatingNextPointer {
     public Node connect(Node root) {
         
         //sol3: one prev pointer, Time: O(n), Space: O(1)
@@ -35,7 +15,7 @@ class Solution {
 
         while(leftMost.left != null)
         {
-            Node head = leftMost;
+            Node head = leftMost;//leftMost at each level
             while(head != null)
             {
                 head.left.next = head.right;
@@ -87,4 +67,29 @@ class Solution {
 
         return root;
     }
+
+
 }
+
+
+// Definition for a Node.
+    class Node {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, Node _left, Node _right, Node _next) {
+            val = _val;
+            left = _left;
+            right = _right;
+            next = _next;
+        }
+    }

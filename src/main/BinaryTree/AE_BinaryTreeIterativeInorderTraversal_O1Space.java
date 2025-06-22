@@ -1,3 +1,5 @@
+package BinaryTree;
+
 import java.util.function.Function;
 // consider 3 scenarios here:
 // 1.when arrived curNode and next go left: we must come from parent node of curNode

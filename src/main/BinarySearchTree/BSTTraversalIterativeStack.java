@@ -9,18 +9,38 @@ public class BSTTraversalIterativeStack {
         Stack<TreeNode> stack = new Stack<>();
 
         TreeNode curNode = root;
+        
+        stack.push(curNode);
 
-        while(curNode != null || !stack.isEmpty()){
-            while(curNode != null){
-                stack.push(curNode);
-
+        while(!stack.isEmpty()){
+            while(curNode != null && curNode.left != null){
+                stack.push(curNode.left);
                 curNode = curNode.left;
             }
 
             curNode = stack.pop();
             array.add(curNode.val);
-            curNode = curNode.right;
+
+            if(curNode.right != null){
+                stack.push(curNode.right);
+                curNode = curNode.right;
+            }
+            else{
+                curNode = null;
+            }
         }
+
+        // while(curNode != null || !stack.isEmpty()){
+        //     while(curNode != null){
+        //         stack.push(curNode);
+
+        //         curNode = curNode.left;
+        //     }
+
+        //     curNode = stack.pop();
+        //     array.add(curNode.val);
+        //     curNode = curNode.right;
+        // }
 
         return array;
     }
