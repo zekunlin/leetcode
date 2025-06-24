@@ -25,14 +25,14 @@ And Time Complexity hence is O(N^2) minimum, also depends on the operations with
 2. Two pointers moving away from the middle, like:
     * isPalindrome:
 
-        private int[] isPalindrome(String s, int leftInd, int rightInd)
+    private int[] isPalindrome(String s, int leftInd, int rightInd)
+    {
+        while(leftInd >= 0 && rightInd < len)
         {
-            while(leftInd >= 0 && rightInd < len)
-            {
-                if (s.charAt(leftInd) != s.charAt(rightInd)) break;
-                leftInd--;
-                rightInd++;
-            }
-
-            return new int[]{leftInd + 1, rightInd};
+            if (s.charAt(leftInd) != s.charAt(rightInd)) break;
+            leftInd--;
+            rightInd++;
         }
+
+        return new int[]{leftInd + 1, rightInd};
+    }
