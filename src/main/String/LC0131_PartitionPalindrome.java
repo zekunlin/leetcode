@@ -1,8 +1,11 @@
+package String;
+import java.util.*;
+
 // note: consider a state space tree for thie string "aab"
 // a, a, b
 // aa, b
 
-class Solution {
+class PartitionPalindrome {
     int len;
     public List<List<String>> partition(String s) {
         len = s.length();

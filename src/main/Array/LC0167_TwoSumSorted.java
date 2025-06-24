@@ -1,4 +1,6 @@
-class Solution {
+package Array;
+
+class TwoSumSorted {
     public int[] twoSum(int[] numbers, int target) {
         int len = numbers.length;
         int i = 0;
@@ -17,3 +19,4 @@ class Solution {
         
         return new int[]{i+1, j+1};
     }
+}

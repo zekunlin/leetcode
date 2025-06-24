@@ -1,4 +1,5 @@
-class Solution {
+package Array;
+class RotateArray {
     public void rotate(int[] nums, int k) {
         //sol3:
         int len = nums.length;

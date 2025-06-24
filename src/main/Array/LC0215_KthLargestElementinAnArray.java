@@ -1,4 +1,7 @@
-class Solution {
+package Array;
+import java.util.*;
+
+class KthLargestInArray {
     public int findKthLargest(int[] nums, int k) {
         /*
         // sol1:

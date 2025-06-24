@@ -1,6 +1,7 @@
-package *;
+package String;
+import java.util.*;
 
-class Solution {
+class LongestSubstringWithoutRepeatingChars {
     public int lengthOfLongestSubstring(String s) {
         int maxLen = 0;
         int sLen = s.length();

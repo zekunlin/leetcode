@@ -1,4 +1,5 @@
-class Solution {
+package Array;
+class PalindromeNumber {
     public boolean isPalindrome(int x) {
         //sol1:
         // String xStr = Integer.toString(x);

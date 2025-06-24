@@ -1,4 +1,7 @@
-class Solution {
+package Array;
+import java.util.*;
+
+class TopKFrequentElement {
     Map<Integer, Integer> freqMap;
     int[] elements;
 

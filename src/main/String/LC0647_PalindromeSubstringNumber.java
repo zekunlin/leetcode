@@ -1,4 +1,6 @@
-class Solution {
+package String;
+
+class PalindromeSubStrNum {
     int len;
     public int countSubstrings(String s) {
         len = s.length();

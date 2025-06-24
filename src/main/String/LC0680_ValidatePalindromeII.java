@@ -1,4 +1,6 @@
-class Solution {
+package String;
+
+class validPalindromeII {
     public boolean validPalindrome(String s) {
         int i = 0;
         int j = s.length() - 1;

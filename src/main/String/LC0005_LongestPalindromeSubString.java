@@ -1,4 +1,6 @@
-class Solution {
+package String;
+
+class LongestPalindromeSubstring {
     // for each char in the string, 
     // expand from that char to two sides left and right, if left and right char are the same then left-- and right++
     // till they are not equal we find the length of the palindrome
