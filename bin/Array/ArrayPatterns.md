@@ -51,4 +51,4 @@ Divide & Conquer often come with recursion, as it divide the problem on array to
 
 ## recursion in Array
 
-Recursion in array is often use to get all combinations of elements in the array, like subset, combination, permutation. And **BackTrack** is often required. 
+Recursion in array is often use to get all combinations of elements in the array, like subset, combination, permutation. And **BackTrack** is often required.
