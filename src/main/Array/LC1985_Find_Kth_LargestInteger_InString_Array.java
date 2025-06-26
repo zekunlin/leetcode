@@ -1,4 +1,7 @@
-class Solution {
+package Array;
+import java.util.*;
+
+class KthLargestIntegerInStringArray {
     /*
     public int compare(char[] a, char[] b)
     {

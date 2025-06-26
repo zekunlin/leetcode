@@ -50,10 +50,10 @@ class BinaryTreeLeveoOrder {
         return ret;
 
         // sol2: DFS, Time: O(N), Space: O()
-        levels = new ArrayList<>();
-        if(root == null) return levels;
-        dfs(root, 0);
-        return levels;
+        // levels = new ArrayList<>();
+        // if(root == null) return levels;
+        // dfs(root, 0);
+        // return levels;
     }
 
     private void dfs(TreeNode node, int level){

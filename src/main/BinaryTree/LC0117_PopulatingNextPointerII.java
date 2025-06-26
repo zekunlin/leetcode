@@ -1,6 +1,5 @@
 package BinaryTree;
 
-import BinaryTree.Node;
 
 public class LC0117_PopulatingNextPointerII {
     public Node connect(Node root) {

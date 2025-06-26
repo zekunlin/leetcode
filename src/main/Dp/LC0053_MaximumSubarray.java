@@ -1,4 +1,4 @@
-package Array;
+package Dp;
 
 public class LC0053_MaximumSubarray {
     //sol1: brutal force, two pointers O(N^2);
