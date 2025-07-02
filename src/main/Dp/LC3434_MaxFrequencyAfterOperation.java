@@ -11,7 +11,7 @@ public class LC3434_MaxFrequencyAfterOperation {
         // each num in array is in [0, 50]
         // so looking for a sub array that can:
         // make me get a maximum the gain, 
-        // where the gain +1 when in subarray when matched a number with x, this means we found a subarray, it has multiple matched numbers to x, we can (x + diff) -> k, but the same time, we are losing number of k, because in this subarray k has to + diff. so a number in subarray matched x ? +1 to gain, a number is equal to k? -1 to gain. 
+        // where the gain +1 when in subarray when matched a number with x, this means we found a subarray, it has multiple matched numbers to x, we can (x + diff) -> k, but the same time, we are losing number of k, because in this subarray k has to + diff. so if a number in subarray matched x: +1 to the cur gain, if a number is equal to k: -1 to the cur gain. 
         // we are looking for a subarray, it gives back maximum of gain
         // that's hwere kadain algo comes into play
         for(int x = 1; x <= 50; x++){
