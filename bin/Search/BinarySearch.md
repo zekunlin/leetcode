@@ -67,4 +67,4 @@ the previous requirement is: find the first element >= target,
 4. '<=' first item smaller or equal than target x: equivalent to find the first element k that > x, means the target is x + 1, then the left of k is the answer (if using second template return left - 1);
 
 can also refer to this post:
-https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/solutions/769703/Python-Clear-explanation-Powerful-Ultimate-Binary-Search-Template.-Solved-many-problems
+<https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/solutions/769703/Python-Clear-explanation-Powerful-Ultimate-Binary-Search-Template.-Solved-many-problems>
