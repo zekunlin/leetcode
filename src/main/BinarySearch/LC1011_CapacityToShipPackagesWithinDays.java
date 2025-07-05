@@ -1,4 +1,4 @@
-package Search;
+package BinarySearch;
 
 public class LC1011_CapacityToShipPackagesWithinDays {
     public int shipWithinDays(int[] weights, int days) {

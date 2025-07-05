@@ -1,4 +1,4 @@
-package Search;
+package BinarySearch;
 
 public class LC2529_MaxCountofPostiveAndNegativeInt {
     public int maximumCount(int[] nums) {

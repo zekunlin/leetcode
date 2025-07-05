@@ -1,4 +1,4 @@
-package Search;
+package BinarySearch;
 
 public class LC1482_MinNumOfDaysToMakeBouquets {
     public int minDays(int[] bloomDay, int m, int k) {

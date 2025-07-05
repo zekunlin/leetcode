@@ -1,4 +1,4 @@
-package Search;
+package BinarySearch;
 
 public class LC0875_KokoEatingBananas {
     public int minEatingSpeed(int[] piles, int h) {

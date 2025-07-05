@@ -1,4 +1,4 @@
-package Search;
+package BinarySearch;
 
 public class LC0034_FindFirstLastPositionInSortedArray {
     public int[] searchRange(int[] nums, int target) {

@@ -15,7 +15,7 @@ import Common.ListNode;
 
 class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
-        /* sol1: note- remember that have a dummy start at null, and a cur pointing to head.
+        //sol1: note- remember that have a dummy start at null, and a cur pointing to head.
         ListNode p1 = null;
         ListNode p2 = head;
 
@@ -27,9 +27,26 @@ class ReverseLinkedList {
             p2 = p3;//move cur forward to next node
         }
         return p1;
-        */
+    }
+
+    //sol3: easier recursion
+
+    public ListNode reverseList3(ListNode node){
+        return recursion(node, null);
+    }
+
+    private ListNode recursion(ListNode head, ListNode newHead){
+        if(head == null) return newHead;
+
+        ListNode next = head.next;
+        head.next = newHead;
+        return recursion(next, head);
+    }
+
+    /* sol2: recursion */
+    public ListNode reverseList2(ListNode head){
         
-        /* sol2: recursion */
+        
         // explaination video: https://youtu.be/S92RuTtt9EE
         // basically what recursion doing here is, process cur.next if cur node has next and next is not null.
         // A->B->C
