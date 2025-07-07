@@ -1,4 +1,4 @@
-package TwoPointers;
+package TwoPointerSlidingWindow;
 
 public class LC0011_ContainerWithMostWater {
     //two pointers,who small moves who. Time:O(N), Space: O(1)
