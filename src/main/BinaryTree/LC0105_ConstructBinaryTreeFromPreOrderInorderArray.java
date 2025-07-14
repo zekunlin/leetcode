@@ -9,7 +9,7 @@ class ConstructBinaryTree {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         valIdxMap = new HashMap<>();
         for(int i = 0; i < inorder.length; i++){
-            valIdxMap.put(inorder[i], i);
+            valIdxMap.put(inorder[i], i);//build val - idx of root node for inorder
         }
         
         TreeNode root = construct(preorder, inorder, 0, inorder.length - 1, 0);

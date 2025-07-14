@@ -38,4 +38,34 @@ class Solution {
 
         return rightTail == null ? leftTail : rightTail;
     }
+
+    //sol2, Time:O(N), space:O(1)
+    public void flatten(TreeNode root) {
+        
+        // Handle the null scenario
+        if (root == null) {
+            return;
+        }
+
+        TreeNode node = root;
+
+        while (node != null) {
+            // If the node has a left child
+            if (node.left != null) {
+                // Find the left child's rightmost node
+                TreeNode rightmost = node.left;
+                while (rightmost.right != null) {
+                    rightmost = rightmost.right; //go all they way right
+                }
+
+                // rewire the connections
+                rightmost.right = node.right; //cut node.right, link node.right to node.left.rightmost
+                node.right = node.left;//node.left becomes node.right
+                node.left = null;
+            }
+
+            // move on to the right side of the tree
+            node = node.right;//now node.right is what node.left before, move one step to the right
+        }
+    }
 }
