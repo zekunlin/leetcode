@@ -1,4 +1,4 @@
-package OOD;
+package OOD.parkingLot;
 
 public class ParkingSpot {
     private Vehicle parkedVehicle;

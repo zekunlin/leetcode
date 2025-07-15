@@ -1,4 +1,4 @@
-package OOD;
+package OOD.parkingLot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
