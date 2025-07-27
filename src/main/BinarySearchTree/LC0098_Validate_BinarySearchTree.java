@@ -56,6 +56,18 @@ class IsValidBST {
         boolean isLeftValid = validBST(node.left, lowerBound, node.val);
         return isLeftValid && validBST(node.right, node.val, upperBound); 
     }
+
+    //sol3: maintain a prev pointer, compare prev with root each time
+    TreeNode[] prev = new TreeNode[1];
+    public boolean dfsHelper(TreeNode node, TreeNode[] prev){
+        if(node == null) return true;
+
+        if(!dfsHelper(node.left, prev)) return false;
+        if(prev[0].val > node.val) return false;
+
+        prev[0] = node;
+        return dfsHelper(node.right, prev);
+    }
 }
 
 
